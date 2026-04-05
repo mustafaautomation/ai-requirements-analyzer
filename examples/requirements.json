@@ -1,0 +1,40 @@
+[
+  {
+    "id": "REQ-001",
+    "title": "User Registration",
+    "description": "Users should be able to create an account with email and password",
+    "acceptanceCriteria": [
+      "Registration form validates email format",
+      "Password must be at least 8 characters",
+      "Duplicate emails are rejected",
+      "Confirmation email is sent after registration",
+      "User is redirected to dashboard after signup"
+    ],
+    "priority": "critical"
+  },
+  {
+    "id": "REQ-002",
+    "title": "Product Search",
+    "description": "Users can search for products by name, category, or price range",
+    "acceptanceCriteria": [
+      "Search results update as user types",
+      "Empty search shows all products",
+      "No results shows appropriate message",
+      "Filters can be combined"
+    ],
+    "priority": "high"
+  },
+  {
+    "id": "REQ-003",
+    "title": "Shopping Cart",
+    "description": "Users can add, remove, and update quantities in their cart",
+    "acceptanceCriteria": [
+      "Adding product updates cart badge count",
+      "Quantity can be increased or decreased",
+      "Removing last item empties the cart",
+      "Cart total updates in real-time",
+      "Cart persists across page navigation"
+    ],
+    "priority": "critical"
+  }
+]
