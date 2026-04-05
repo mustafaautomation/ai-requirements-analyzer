@@ -64,3 +64,68 @@ describe('TestCaseGenerator', () => {
     expect(coverage.coveragePercentage).toBe(50);
   });
 });
+
+describe('TestCaseGenerator - additional', () => {
+  it('should include test IDs with requirement reference', () => {
+    const gen = new TestCaseGenerator(new MockLLMClient());
+    const report = gen.analyzeCoverage(
+      [
+        {
+          id: 'REQ-005',
+          title: 'X',
+          description: '',
+          acceptanceCriteria: [],
+          priority: 'high' as const,
+        },
+      ],
+      [
+        {
+          id: 'TC-REQ-005-1',
+          requirementId: 'REQ-005',
+          title: 'T',
+          type: 'functional' as const,
+          priority: 'medium' as const,
+          preconditions: [],
+          steps: [],
+          expectedResult: '',
+          tags: [],
+        },
+      ],
+    );
+    expect(report.coveragePercentage).toBe(100);
+    expect(report.testsByType.functional).toBe(1);
+  });
+
+  it('should count tests by priority', () => {
+    const gen = new TestCaseGenerator(new MockLLMClient());
+    const coverage = gen.analyzeCoverage(
+      [mockReq],
+      [
+        {
+          id: 'TC-1',
+          requirementId: 'REQ-001',
+          title: 'T',
+          type: 'functional' as const,
+          priority: 'critical' as const,
+          preconditions: [],
+          steps: [],
+          expectedResult: '',
+          tags: [],
+        },
+        {
+          id: 'TC-2',
+          requirementId: 'REQ-001',
+          title: 'T',
+          type: 'negative' as const,
+          priority: 'high' as const,
+          preconditions: [],
+          steps: [],
+          expectedResult: '',
+          tags: [],
+        },
+      ],
+    );
+    expect(coverage.testsByPriority.critical).toBe(1);
+    expect(coverage.testsByPriority.high).toBe(1);
+  });
+});

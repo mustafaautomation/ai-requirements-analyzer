@@ -63,3 +63,23 @@ describe('parseRequirements', () => {
     expect(parseRequirements('')).toHaveLength(0);
   });
 });
+
+describe('parseRequirements - additional', () => {
+  it('should handle requirements with criteria key instead of acceptanceCriteria', () => {
+    const json = JSON.stringify([{ title: 'Login', criteria: ['Works', 'Fast'] }]);
+    const reqs = parseRequirements(json);
+    expect(reqs[0].acceptanceCriteria).toEqual(['Works', 'Fast']);
+  });
+
+  it('should handle name field as fallback for title', () => {
+    const json = JSON.stringify([{ name: 'Search Feature' }]);
+    const reqs = parseRequirements(json);
+    expect(reqs[0].title).toBe('Search Feature');
+  });
+
+  it('should handle body field as fallback for description', () => {
+    const json = JSON.stringify([{ title: 'X', body: 'Some body text' }]);
+    const reqs = parseRequirements(json);
+    expect(reqs[0].description).toBe('Some body text');
+  });
+});
