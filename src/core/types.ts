@@ -1,11 +1,6 @@
 export type Priority = 'critical' | 'high' | 'medium' | 'low';
 export type TestType =
-  | 'functional'
-  | 'edge-case'
-  | 'negative'
-  | 'performance'
-  | 'security'
-  | 'accessibility';
+  'functional' | 'edge-case' | 'negative' | 'performance' | 'security' | 'accessibility';
 
 export interface Requirement {
   id: string;

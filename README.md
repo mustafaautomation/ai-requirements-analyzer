@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/mustafaautomation/ai-requirements-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/mustafaautomation/ai-requirements-analyzer/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 AI-powered tool that reads PRDs, user stories, and requirements documents, then generates structured test cases with coverage analysis. Pluggable LLM backend (Claude, OpenAI, or custom).
 
